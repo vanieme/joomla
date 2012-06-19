@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<definitions name="HelloWorld" targetNamespace="urn:HelloWorld" xmlns:tns="urn:HelloWorld"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Hello">
+      <xsd:element name="getName" type="xsd:string" />
+	  <xsd:element name="HelloResponse" type="xsd:string" />	 	  
+	</xsd:schema>			
+  </types>
+  
+  <message name="doHello">
+    <part name="yourName" type="tns:getName" />
+  </message>
+  
+  <message name="doHelloResponse">
+    <part name="return" type="tns:HelloResponse" />
+  </message>  
+  
+  <portType name="HelloPort">
+    <operation name="doHello">
+	  <input message="tns:doHello" />
+	  <output message="tns:doHelloResponse" />
+	</operation>
+  </portType>
+  
+  <binding name="HelloBinding" type="tns:HelloPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+	  <operation name="doHello">
+	    <soap:operation soapAction="urn:HelloAction" />
+		<input>
+		  <soap:body use="encoded" namespace="urn:Hello" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />		  
+		</input>
+		<output>
+		  <soap:body use="encoded" namespace="urn:Hello" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />		  
+		</output>
+	  </operation>
+  </binding>
+  
+  <service name="HelloService">
+    <port name="HelloPort" binding="tns:HelloBinding">
+	  <soap:address location="http://joomla.vanithadevel.platinum.local/soap/wsdl/hello_server.php" />
+	</port>
+  </service>
+    
+</definitions>

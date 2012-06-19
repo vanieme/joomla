@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="authentication">
+  <name>Authentication - Trading Pursuits SugarCRM</name>
+  <author>James Moey</author>
+  <creationDate>March 2011</creationDate>
+  <copyright>(C) 2011 Trading Pursuits All rights reserved.</copyright>
+  <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+  <authorEmail>james.moey@platinmpursuits.com</authorEmail>
+  <authorUrl>http://www.tradingpursuits.com</authorUrl>
+  <version>0.0.1</version>
+  <description>This plugin provides Joomla authentication via SugarCRM through Direct SQL Access method.</description>
+  <files>
+      <filename plugin="iot_sugarauth">iot_sugarauth.php</filename>
+  </files>
+</extension>
